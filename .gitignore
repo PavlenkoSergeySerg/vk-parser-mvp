@@ -1,0 +1,34 @@
+# Секреты и переменные окружения
+.env
+.env.*
+!.env.example
+.dev.vars
+*.pem
+*.key
+*.p12
+credentials.json
+service-account*.json
+secrets*.json
+token.json
+
+# Локальное состояние ИИ-агентов и редакторов
+.claude/
+.cursor/
+.codex/
+.gemini/
+.mcp.json
+claude_desktop_config.json
+*.log
+*.sqlite
+
+# Python / Node специфика
+.venv/
+__pycache__/
+node_modules/
+dist/
+build/
+
+# Отчёты и данные парсера (не коммитим результаты работы)
+reports/
+data/
+*.csv
