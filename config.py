@@ -88,3 +88,21 @@ def check_required_env() -> list[str]:
             missing.append(var)
     
     return missing
+
+def get_http_proxy() -> str | None:
+    """Возвращает HTTP прокси (может быть None)."""
+    return os.getenv("HTTP_PROXY", "").strip() or None
+
+
+def get_https_proxy() -> str | None:
+    """Возвращает HTTPS прокси (может быть None)."""
+    return os.getenv("HTTPS_PROXY", "").strip() or None
+
+
+def get_proxies() -> dict | None:
+    """Возвращает словарь прокси для requests (может быть None)."""
+    http = get_http_proxy()
+    https = get_https_proxy()
+    if http or https:
+        return {"http": http, "https": https}
+    return None

@@ -66,7 +66,8 @@ def send_message(
     }
 
     try:
-        response = requests.post(url, json=payload, timeout=10)
+        proxies = config.get_proxies()
+        response = requests.post(url, json=payload, timeout=10, proxies=proxies)
         response.raise_for_status()
 
         result = response.json()
@@ -216,7 +217,8 @@ def get_me(bot_token: Optional[str] = None) -> Optional[dict]:
     url = f"{TELEGRAM_API_BASE}/bot{token}/getMe"
 
     try:
-        response = requests.get(url, timeout=10)
+        proxies = config.get_proxies()
+        response = requests.get(url, timeout=10, proxies=proxies)
         response.raise_for_status()
         result = response.json()
         if result.get("ok"):
@@ -226,4 +228,3 @@ def get_me(bot_token: Optional[str] = None) -> Optional[dict]:
         return None
 # test save
    # ПРОВЕРКА СОХРАНЕНИЯ ПРЯМО СЕЙЧАС
-   
