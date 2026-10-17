@@ -182,3 +182,4 @@ def get_stats(conn=None):
     finally:
         if own_conn:
             conn.close()
+
